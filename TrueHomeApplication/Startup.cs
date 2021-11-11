@@ -11,6 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
+using TrueHomeApplication.Data;
+using Microsoft.EntityFrameworkCore;
+using TrueHomeApplication.Data.Interfaces;
 
 namespace TrueHomeApplication
 {
@@ -26,6 +29,13 @@ namespace TrueHomeApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
+            var sqlConnectionString = Configuration.GetConnectionString("TrueHomeApp");
+
+            services.AddDbContext<ActivityContext>(option => option.UseNpgsql(sqlConnectionString));
+
+            services.AddScoped<IActivity, DataActivity>();
 
             services.AddCors(c =>
             {

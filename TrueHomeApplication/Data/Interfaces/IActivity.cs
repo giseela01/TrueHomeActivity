@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using TrueHomeApplication.Models;
+
+namespace TrueHomeApplication.Data.Interfaces
+{
+    public interface IActivity
+    {
+        void AddActivity(Activity activity);
+        void UpdateActivity(Activity activity);
+        Activity GetActivity(int id);
+        List<Activity> GetListActivities();
+    }
+}
