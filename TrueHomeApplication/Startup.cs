@@ -36,6 +36,7 @@ namespace TrueHomeApplication
             services.AddDbContext<ActivityContext>(option => option.UseNpgsql(sqlConnectionString));
 
             services.AddScoped<IActivity, DataActivity>();
+            services.AddScoped<IProperty, DataProperty>();
 
             services.AddCors(c =>
             {

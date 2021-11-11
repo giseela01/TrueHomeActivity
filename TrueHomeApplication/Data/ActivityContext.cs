@@ -14,6 +14,7 @@ namespace TrueHomeApplication.Data
         }
 
         public DbSet<Activity> Activity { get; set; }
+        public DbSet<Property> Property { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

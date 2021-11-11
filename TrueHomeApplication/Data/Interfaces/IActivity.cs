@@ -11,6 +11,7 @@ namespace TrueHomeApplication.Data.Interfaces
         void AddActivity(Activity activity);
         void UpdateActivity(Activity activity);
         Activity GetActivity(int id);
-        List<Activity> GetListActivities();
+        List<ActivityViewModel> GetListActivitiesWithFilter(DateTime sdate, DateTime edate, string status);
+        List<ActivityViewModel> GetListActivities();
     }
 }
