@@ -40,18 +40,23 @@ namespace TrueHomeApplication.Controllers
         }
 
         [HttpPost("CreateActivity")]
-        public IActionResult CreateActivity([FromBody] Activity activity)
+        public IActionResult CreateActivity([FromBody]ActivityRequest _activity)
         {
-            DateTime _dtSchedule = new DateTime();
             if (ModelState.IsValid)
             {
+                Activity activity = new Activity();
                 //validate if the property is disabled
-                var prop = _dataproperty.GetProperty(activity.Property_Id);
+                var prop = _dataproperty.GetProperty(_activity.Property_Id);
                 if (prop != null)
                 {
                     if (prop.Disabled_at == null)
                     {
+                        activity.Created_at = _activity.Created_at;
                         activity.Property_Id = prop.Id;
+                        activity.Schedule = _activity.Schedule;
+                        activity.Status = _activity.Status;
+                        activity.Title = _activity.Title;
+                        activity.Updated_at = _activity.Updated_at;
 
                         //validate if the activity schedule is not between schedules activities from the same property
                         var lstActivities = _dataactivity.GetListActivities().Where(x => x.Property_Id == activity.Property_Id
@@ -83,12 +88,11 @@ namespace TrueHomeApplication.Controllers
             return BadRequest();
         }
 
-        [HttpGet("GetAllActivitiesFilter/{StarDate}/{EndDate}/{status}")]
-        public IEnumerable<ActivityViewModel> GetActivityWithFilter(DateTime _StarDate, DateTime _EndDate, string Status )
+        [HttpGet("GetAllActivitiesFilter")]
+        public IEnumerable<ActivityViewModel> GetActivityWithFilter([FromQuery] ActivityFiltersRequest _activity)
         {
-
             DateTime _date = DateTime.Now;
-            var lstActivities = _dataactivity.GetListActivities();
+            var lstActivities = _dataactivity.GetListActivitiesWithFilter(_activity.StartDate, _activity.EndDate, _activity.Status);
             foreach (ActivityViewModel item in lstActivities)
             {
                 if (item.Status == "Active" && item.Schedule >= _date)
@@ -99,13 +103,21 @@ namespace TrueHomeApplication.Controllers
                 { item.Condition = "Finalizada"; }
             }
             return lstActivities;
+        
+
         }
 
         [HttpPut("ModifyActivity")]
-        public IActionResult EditActivity([FromBody] Activity activity)
+        public IActionResult EditActivity([FromBody] ModifyActivityRequest _activity)
         {
             if (ModelState.IsValid)
             {
+                Activity activity = new Activity();
+
+                activity.Id = _activity.Id;
+                activity.Schedule = _activity.Schedule;
+                activity.Status = _activity.Status;
+
                 var act = _dataactivity.GetActivity(activity.Id);
 
                 if (act != null && act.Status != "Cancelled")
@@ -116,10 +128,8 @@ namespace TrueHomeApplication.Controllers
                     {
                         activity.Created_at = act.Created_at;
                         activity.Property_Id = act.Property_Id;
-                        activity.Schedule = act.Schedule;
-                        activity.Status = act.Status;
                         activity.Title = act.Title;
-                        activity.Updated_at = act.Updated_at;
+                        activity.Updated_at = DateTime.Now;
 
                         _dataactivity.UpdateActivity(activity);
                         return Ok();

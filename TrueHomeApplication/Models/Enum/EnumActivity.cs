@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace TrueHomeApplication.Models.Enum
 {
-    public class EnumProperty
+    public enum EnumActivity
     {
+        Active=1,
+        Cancelled=2,
+        Done=3
+
+
     }
 }

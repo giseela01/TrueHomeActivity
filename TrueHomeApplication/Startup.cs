@@ -14,6 +14,7 @@ using Newtonsoft.Json.Serialization;
 using TrueHomeApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using TrueHomeApplication.Data.Interfaces;
+using FluentValidation.AspNetCore;
 
 namespace TrueHomeApplication
 {
@@ -29,7 +30,11 @@ namespace TrueHomeApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(fv =>
+            {
+                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                fv.RegisterValidatorsFromAssemblyContaining<Startup>();
+            });
 
             var sqlConnectionString = Configuration.GetConnectionString("TrueHomeApp");
 

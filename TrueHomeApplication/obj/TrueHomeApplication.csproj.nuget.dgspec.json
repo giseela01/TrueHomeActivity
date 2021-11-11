@@ -1,33 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Giss\\Documents\\Desarrollo\\TrueHome\\TrueHomeApplication\\TrueHomeApplication.csproj": {}
+    "C:\\Users\\Gisela.Tovar\\source\\repos\\Practica\\TrueHomeActivity\\TrueHomeApplication\\TrueHomeApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Giss\\Documents\\Desarrollo\\TrueHome\\TrueHomeApplication\\TrueHomeApplication.csproj": {
+    "C:\\Users\\Gisela.Tovar\\source\\repos\\Practica\\TrueHomeActivity\\TrueHomeApplication\\TrueHomeApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Giss\\Documents\\Desarrollo\\TrueHome\\TrueHomeApplication\\TrueHomeApplication.csproj",
+        "projectUniqueName": "C:\\Users\\Gisela.Tovar\\source\\repos\\Practica\\TrueHomeActivity\\TrueHomeApplication\\TrueHomeApplication.csproj",
         "projectName": "TrueHomeApplication",
-        "projectPath": "C:\\Users\\Giss\\Documents\\Desarrollo\\TrueHome\\TrueHomeApplication\\TrueHomeApplication.csproj",
-        "packagesPath": "C:\\Users\\Giss\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Giss\\Documents\\Desarrollo\\TrueHome\\TrueHomeApplication\\obj\\",
+        "projectPath": "C:\\Users\\Gisela.Tovar\\source\\repos\\Practica\\TrueHomeActivity\\TrueHomeApplication\\TrueHomeApplication.csproj",
+        "packagesPath": "C:\\Users\\Gisela.Tovar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gisela.Tovar\\source\\repos\\Practica\\TrueHomeActivity\\TrueHomeApplication\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Giss\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Gisela.Tovar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,6 +39,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[10.3.3, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[5.0.12, )"
@@ -89,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     }
