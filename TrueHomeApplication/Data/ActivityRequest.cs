@@ -27,14 +27,6 @@ namespace TrueHomeApplication.Models
 
         [Required]
         [DataMember]
-        public DateTime Created_at { get; set; }
-
-        [Required]
-        [DataMember]
-        public DateTime Updated_at { get; set; }
-
-        [Required]
-        [DataMember]
         public string Status { get; set; }
 
         [Required]

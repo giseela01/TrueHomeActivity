@@ -20,7 +20,7 @@ namespace TrueHomeApplication.Models
         public int Id { get; set; }
 
         [DataMember]
-        public DateTime Schedule { get; set; }
+        public DateTime? Schedule { get; set; }
       
 
         [DataMember]

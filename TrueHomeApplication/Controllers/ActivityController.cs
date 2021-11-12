@@ -51,12 +51,12 @@ namespace TrueHomeApplication.Controllers
                 {
                     if (prop.Disabled_at == null)
                     {
-                        activity.Created_at = _activity.Created_at;
+                        activity.Created_at = DateTime.Now;
                         activity.Property_Id = prop.Id;
                         activity.Schedule = _activity.Schedule;
                         activity.Status = _activity.Status;
                         activity.Title = _activity.Title;
-                        activity.Updated_at = _activity.Updated_at;
+                        activity.Updated_at = DateTime.Now;
 
                         //validate if the activity schedule is not between schedules activities from the same property
                         var lstActivities = _dataactivity.GetListActivities().Where(x => x.Property_Id == activity.Property_Id
@@ -112,23 +112,25 @@ namespace TrueHomeApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                List<ActivityViewModel> lstActivities = new List<ActivityViewModel>();
                 Activity activity = new Activity();
 
-                activity.Id = _activity.Id;
-                activity.Schedule = _activity.Schedule;
-                activity.Status = _activity.Status;
 
-                var act = _dataactivity.GetActivity(activity.Id);
+                activity = _dataactivity.GetActivity(_activity.Id);
 
-                if (act != null && act.Status != "Cancelled")
+                if (activity != null && activity.Status != "Cancelled")
                 {
-                    var lstActivities = _dataactivity.GetListActivities().Where(x => x.Property_Id == activity.Property_Id
-                        && activity.Schedule > x.Schedule && activity.Schedule < x.Schedule.AddHours(1)).ToList();
+                    //If schedule column has been changed
+                    if (_activity.Schedule != null) {
+                        lstActivities = _dataactivity.GetListActivities().Where(x => x.Property_Id == activity.Property_Id
+                           && activity.Schedule > x.Schedule && activity.Schedule < x.Schedule.AddHours(1)).ToList();
+                    }
+
                     if (lstActivities.Count == 0)
                     {
-                        activity.Created_at = act.Created_at;
-                        activity.Property_Id = act.Property_Id;
-                        activity.Title = act.Title;
+                        activity.Id = _activity.Id;
+                        activity.Schedule = (DateTime)(_activity.Schedule == null ? activity.Schedule : _activity.Schedule);
+                        activity.Status = String.IsNullOrEmpty(_activity.Status) ? activity.Status : _activity.Status;
                         activity.Updated_at = DateTime.Now;
 
                         _dataactivity.UpdateActivity(activity);
@@ -140,6 +142,13 @@ namespace TrueHomeApplication.Controllers
                         return BadRequest(message);
                     }
 
+                }
+                else
+                {
+                    if (activity == null)
+                    { return NotFound("El Id de la actividad no se encuentra en los registros"); }
+                    else if (activity.Status == "Cancelled")
+                    { return BadRequest("La actividad no se puede modificar ya que esta cancelada"); }
                 }
             }
             return BadRequest();

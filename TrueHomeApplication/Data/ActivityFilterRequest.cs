@@ -17,6 +17,7 @@ namespace TrueHomeApplication.Models
     {
 
         [DataMember]
+        [Required]
         public DateTime StartDate { get; set; }
 
         [Required]

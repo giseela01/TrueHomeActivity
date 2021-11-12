@@ -60,6 +60,7 @@ namespace TrueHomeApplication.Data
             {
                 DateTime _date = DateTime.Now;
                 var lst = _context.Activity.Where(x => sdate <= x.Schedule && x.Schedule <= edate && x.Status==status)
+                    .Include(x => x.property)
                     .Select(c => new ActivityViewModel
                     {
                         Id = c.Id,
@@ -72,7 +73,7 @@ namespace TrueHomeApplication.Data
                         TitleProperty = c.property.Title,
                         AddressProperty = c.property.Address,
                     })
-                    .OrderBy(x => x.Id).Include(x => x.property).ToList();
+                    .OrderBy(x => x.Schedule).ToList();
                 return lst;
             }
             catch (Exception ex)
@@ -87,6 +88,7 @@ namespace TrueHomeApplication.Data
             {
                 DateTime _date = DateTime.Now;
                 var lst = _context.Activity.Where(x => _date.AddDays(-3) <= x.Schedule && x.Schedule <= _date.AddDays(14))
+                    .Include(x => x.property)
                     .Select(c => new ActivityViewModel {
                         Id = c.Id,
                         Schedule = c.Schedule,
@@ -98,7 +100,7 @@ namespace TrueHomeApplication.Data
                         TitleProperty = c.property.Title,
                         AddressProperty = c.property.Address,
                     })
-                    .OrderBy(x => x.Id).Include(x => x.property).ToList();
+                    .OrderBy(x => x.Schedule).ToList();
                 return lst;
             }
             catch (Exception ex)

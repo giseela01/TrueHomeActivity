@@ -15,7 +15,6 @@ C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\bin\Debug\net5.0
 C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\obj\Debug\net5.0\TrueHomeApplication.csprojAssemblyReference.cache
 C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\obj\Debug\net5.0\TrueHomeApplication.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\obj\Debug\net5.0\TrueHomeApplication.AssemblyInfoInputs.cache
 C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\obj\Debug\net5.0\TrueHomeApplication.AssemblyInfo.cs
@@ -114,3 +113,6 @@ C:\Users\Gisela.Tovar\source\repos\Practica\TrueHomeActivity\TrueHomeApplication
 C:\Users\Gisela.Tovar\source\repos\Practica\TrueHomeActivity\TrueHomeApplication\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\Gisela.Tovar\source\repos\Practica\TrueHomeActivity\TrueHomeApplication\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
 C:\Users\Gisela.Tovar\source\repos\Practica\TrueHomeActivity\TrueHomeApplication\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\Giss\Documents\Desarrollo\TrueHome\TrueHomeApplication\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
